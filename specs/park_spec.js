@@ -43,7 +43,7 @@ describe('Park', function() {
     assert.strictEqual(actual, 1);
   });
 
-  xit('should be able to find the dinosaur that attracts the most visitors', function(){
+  it('should be able to find the dinosaur that attracts the most visitors', function(){
     park.addDinosaur(dinosaur1);
     park.addDinosaur(dinosaur2);
     const actual = park.checkMostPopular();

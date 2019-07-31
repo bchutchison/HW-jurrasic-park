@@ -16,6 +16,20 @@ Park.prototype.removeDinosaur = function (dinosaur) {
 };
 
 
+
+Park.prototype.checkMostPopular = function () {
+  let mostAttactive = this.dinosaurCollection[0];
+  //loop through and compare to first one and replace if better
+  for(let dinosaur of this.dinosaurCollection){
+    if(mostAttactive.guestsAttractedPerDay < dinosaur.guestsAttractedPerDay){
+      mostAttactive = dinosaur;
+    }
+  }
+  return mostAttactive
+};
+
+
+
 Park.prototype.findSpecies = function (species) {
 
     let array = []
@@ -28,10 +42,11 @@ Park.prototype.findSpecies = function (species) {
 };
 
 
+//this will not work because the length of the array is changing as we loop through and remove dinosaurs.
 Park.prototype.removeSpecies = function (species) {
   for(var i = 0; i < this.dinosaurCollection.length; i++){
     if (this.dinosaurCollection[i].species === species){
-    this.removeDinosaur(i);
+    this.removeDinosaur(this.dinosaurCollection[i]);
     }
   }
 };
@@ -43,11 +58,7 @@ module.exports = Park;
 
 
 
-// Park.prototype.checkMostPopular = function () {
-//   this.dinosaurCollection.forEach(function (item) {
-//     console.log(item);
-//   });
-// };
+
 
 
 // var currentMax = first item in array
